@@ -80,3 +80,12 @@ coverage/
 # Optional (if using preload build tools)
 # ======================
 preload/dist/
+
+
+release-builds/
+dist/
+out/
+build/
+*.asar
+app/dist/
+app/build/

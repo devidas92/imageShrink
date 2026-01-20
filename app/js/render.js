@@ -19,5 +19,10 @@ form.addEventListener('submit', (e) => {
     ipcRenderer.send('image:minimize', {
         imgPath,
         quality
-    })
+    });
 })
+
+// Receive done message
+ipcRenderer.on('image:done', () => {
+    M.toast({ html: 'Image resized successfully!' });
+});

@@ -1,6 +1,8 @@
 'use strict';
 const path = require('path');
 const os = require('os')
+const log = require('electron-log'); // "C:\Users\USER\AppData\Roaming\image-shrink\logs\main.log"
+
 const { app, BrowserWindow, Menu, ipcMain, shell } = require('electron');
 
 // Environment checks
@@ -123,10 +125,11 @@ async function shrinkImage({ imgPath, quality, dest }) {
       imageminPngquant({ quality: [pngQuality, pngQuality] })
       ]
     });
+    log.info(files);
     shell.openPath(dest)
-
+    mainWindow.webContents.send('image:done');
   } catch (error) {
-    console.log(error)
+    log.error(error)
   }
 
 }
